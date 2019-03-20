@@ -27,12 +27,12 @@ func NewFbAlbum(token string) *FbAlbum {
 	return f
 }
 
-// Get my all albums
+// GetMyAlbums gets my all albums
 func (self *FbAlbum) GetMyAlbums() (*FBAlbums, error) {
 	return self.GetAlbumsByUserId("me")
 }
 
-// Get all album using user id.
+// GetAlbumsByUserId gets all album using user id.
 // note: this function only work if you provide a page id or page name. such as scottiepippen or 112743018776863.
 func (self *FbAlbum) GetAlbumsByUserId(uid string) (*FBAlbums, error) {
 	if uid == "" {
@@ -44,7 +44,7 @@ func (self *FbAlbum) GetAlbumsByUserId(uid string) (*FBAlbums, error) {
 	return &retAlbum, nil
 }
 
-// Get all photo from a album id, you can get album id from FBAlbums{} struct.
+// GetPhotoByAlbum gets all photo from a album id, you can get album id from FBAlbums{} struct.
 func (self *FbAlbum) GetPhotoByAlbum(albumId string, count int) (*FBPhotos, error) {
 	if albumId == "" {
 		return nil, errors.New("albumId is empty")
